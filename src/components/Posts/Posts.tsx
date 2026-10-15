@@ -1,13 +1,13 @@
-import type { Post as PostData } from '../../data/posts';
-import Post from '../Post/Post';
+import { Post as PostType } from "../../@types"
+import Post from "../Post/Post"
 
-import './Posts.css';
+import "./Posts.css"
 
 interface PostsProps {
-  posts: PostData[];
-  isZenModeEnabled: boolean;
-  searchText: string;
-  onSearchTextChange: (nextSearchText: string) => void;
+  posts: PostType[]
+  isZenModeEnabled: boolean
+  searchText: string
+  onSearchTextChange: (nextSearchText: string) => void
 }
 
 function Posts({
@@ -16,24 +16,24 @@ function Posts({
   searchText,
   onSearchTextChange,
 }: PostsProps) {
-  const cssClass = isZenModeEnabled ? 'posts posts--zen' : 'posts';
-  const normalizedSearch = searchText.trim().toLocaleLowerCase('fr');
+  const cssClass = isZenModeEnabled ? "posts posts--zen" : "posts"
+  const normalizedSearch = searchText.trim().toLocaleLowerCase("fr")
 
   const filteredPosts = posts.filter((post) => {
-    if (normalizedSearch === '') {
-      return true;
+    if (normalizedSearch === "") {
+      return true
     }
 
     return (
-      post.title.toLocaleLowerCase('fr').includes(normalizedSearch) ||
-      post.excerpt.toLocaleLowerCase('fr').includes(normalizedSearch)
-    );
-  });
+      post.title.toLocaleLowerCase("fr").includes(normalizedSearch) ||
+      post.excerpt.toLocaleLowerCase("fr").includes(normalizedSearch)
+    )
+  })
 
   const resultMessage =
     filteredPosts.length === 0
-      ? 'Aucun article ne correspond à votre recherche.'
-      : `${filteredPosts.length} article${filteredPosts.length > 1 ? 's' : ''} trouvé${filteredPosts.length > 1 ? 's' : ''}.`;
+      ? "Aucun article ne correspond à votre recherche."
+      : `${filteredPosts.length} article${filteredPosts.length > 1 ? "s" : ""} trouvé${filteredPosts.length > 1 ? "s" : ""}.`
 
   return (
     <main className={cssClass}>
@@ -69,7 +69,7 @@ function Posts({
         ))}
       </div>
     </main>
-  );
+  )
 }
 
-export default Posts;
+export default Posts
