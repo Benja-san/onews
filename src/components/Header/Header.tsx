@@ -2,7 +2,7 @@ import { Category } from "../../@types"
 import "./Header.css"
 
 interface HeaderProps {
-  categories: Category
+  categories: Category[]
   isZenModeEnabled: boolean
   searchText: string
   onToggleZenMode: () => void
